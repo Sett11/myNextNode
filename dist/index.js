@@ -7,16 +7,10 @@ const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
 const port = 3000;
 app.get('/', (req, res) => {
-    const a = 4;
-    if (a > 5) {
-        res.send('OK-OK)');
-    }
-    else {
-        res.send('Hello World!');
-    }
+    res.json({ message: 'Hi, idiots...!' });
 });
 app.get('/users', (req, res) => {
-    res.send('Hello User!.!.!');
+    res.send({ messege: 'Hello User!.!.!' });
 });
 app.post('/users', (req, res) => {
     res.send('We created users!.!');
