@@ -1,5 +1,5 @@
 import express from 'express'
-const app = express()
+export const app = express()
 const port = 3000
 
 const jsonBodyMiddleware = express.json()
@@ -15,7 +15,7 @@ const HTTP_STATUSES = {
 }
 
 
-const db = {
+let db = {
   courses: [
   {id:1,title:'Front-end'},
   {id:2,title:'Back-end'},
@@ -79,6 +79,11 @@ app.put('/courses/:id', (req, res) => {
     return
   }
   foundCourse.title = req.body.title
+  res.sendStatus(HTTP_STATUSES.NO_CONTENT_204)
+})
+
+app.delete('/__test__/data', (req, res)=>{
+  db.courses = []
   res.sendStatus(HTTP_STATUSES.NO_CONTENT_204)
 })
 
